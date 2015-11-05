@@ -1,5 +1,6 @@
 # simditor-qn
 
+simditor upload router with qiniu.com for expressjs
 
 Artwork by [i5ting](http://www.github.com/i5ting/).
 
@@ -56,6 +57,24 @@ config = {
 	}
 }
 ```
+
+## Usage in Simditor
+
+```
+var editor = new Simditor({
+  textarea: $('#editor'),
+  //optional options
+  upload: {
+      fileObjName: 'file',
+      url: '/simditor/upload',
+      fileKey: 'file',
+      params: {
+          "token": window.qn_token
+      }
+  }
+});
+```
+  
 
 ## Test
 
