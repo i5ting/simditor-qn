@@ -4,8 +4,9 @@ var router = express.Router();
 var multer  = require('multer');
 
 module.exports = function (app, cfg){
+  console.log(cfg);
   var upload = multer(cfg.multer);
-  var upload_action = require('./upload')(cfg.qn); 
+  var upload_action = require('./upload')(cfg); 
   
-  app.post('/', upload.single('file'), upload_action);
+  app.post('/simditor/upload', upload.single('file'), upload_action);
 }

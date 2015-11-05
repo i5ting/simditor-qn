@@ -1,12 +1,18 @@
 var multer = require('multer')
 var qn = require('qn');
 
-function m(config) {
+function middleware(config) {
 	var upload = multer(config.multer)
 	var client = qn.create(config.qn);
 	var token = client.uploadToken();
 
 	return function (req, res, next) {
+    if (!req.file || !req.file.path) {
+			return res.json({
+				success: false,
+				msg: 'req.file.path is not exist!'
+			})
+    }
 		var filepath = req.file.path;
 		client.uploadFile(filepath, {}, function (err, result) {
 			// {
@@ -20,14 +26,15 @@ function m(config) {
 			// }
 			if (err) {
 				console.log(err);
-				res.json({
+				return res.json({
 					success: false,
-					msg: 'upload failed'
+					msg: 'upload failed',
+          err: err
 				})
 			} else {
 				var url = config.url(result);
 
-				res.json({
+				return res.json({
 					success: true,
 					msg: 'upload sucess',
 					file_path: url
@@ -37,4 +44,4 @@ function m(config) {
 	}
 }
 
-module.exports = m;
+module.exports = middleware;
