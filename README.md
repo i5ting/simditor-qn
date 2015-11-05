@@ -11,23 +11,55 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 
 ## Install
 
-    [sudo]npm install -g simditor-qn
+    [sudo]npm install --save simditor-qn
 
 ## Usage 
 
 ```
-simditor-qn
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+var simditor_qn_config = require('../simditor_qn')
+
+require('simditor-qn')(app, simditor_qn_config);
+
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
 ```
 
-## Code
+## Configuration
 
 ```
-  #!/usr/bin/env node
-
-  var simditor-qn = require("simditor-qn");
-  simditor-qn();
+config = {
+	multer:{ 
+	 	dest: 'uploads/' 
+	},
+	qn:{
+		accessKey: 'xxx',
+		secretKey: 'yyy',
+		bucket: 'mengxiaoban',
+		origin: 'http://{bucket}.u.qiniudn.com',
+		// timeout: 3600000, // default rpc timeout: one hour, optional
+		// if your app outside of China, please set `uploadURL` to `http://up.qiniug.com/`
+		// uploadURL: 'http://up.qiniu.com/',
+	},
+	url:function(result){
+		return "http://img.mengxiaoban.cn/" + result.hash;
+	}
+}
 ```
 
+## Test
+
+![](img/test.png)
 ## Contributing
 
 1. Fork it
