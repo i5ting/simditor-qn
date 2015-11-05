@@ -1,0 +1,180 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:README</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="simditor-qn">simditor-qn</h1>
+<p>simditor upload router with qiniu.com for expressjs</p>
+<p>Artwork by <a href="http://www.github.com/i5ting/">i5ting</a>.</p>
+<p><a href="https://david-dm.org/i5ting/simditor-qn"><img src="https://david-dm.org/i5ting/simditor-qn.svg" alt="Deps"></a> 
+<a href="https://www.npmjs.com/package/simditor-qn"><img src="https://img.shields.io/npm/v/simditor-qn.svg" alt="npm"></a>
+<a href="https://raw.githubusercontent.com/i5ting/simditor-qn/master/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a>
+<a href="https://www.npmjs.com/package/simditor-qn"><img src="https://img.shields.io/npm/dt/simditor-qn.svg" alt="npm"></a></p>
+<h2 id="install">Install</h2>
+<pre><code>[sudo]npm install --save simditor-qn
+</code></pre><h2 id="usage">Usage</h2>
+<pre><code>var express = require(&#39;express&#39;);
+var app = express();
+
+app.get(&#39;/&#39;, function (req, res) {
+  res.send(&#39;Hello World!&#39;);
+});
+
+var simditor_qn_config = require(&#39;../simditor_qn&#39;)
+
+require(&#39;simditor-qn&#39;)(app, simditor_qn_config);
+
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log(&#39;Example app listening at http://%s:%s&#39;, host, port);
+});
+</code></pre><h2 id="configuration">Configuration</h2>
+<pre><code>module.exports = {
+  path: &#39;/simditor/upload&#39;,
+  fileKey: &#39;file&#39;,
+    multer:{ 
+         dest: &#39;uploads/&#39; 
+    },
+    qn:{
+        accessKey: &#39;xxx&#39;,
+        secretKey: &#39;yyy&#39;,
+        bucket: &#39;mengxiaoban&#39;,
+        origin: &#39;http://{bucket}.u.qiniudn.com&#39;,
+        // timeout: 3600000, // default rpc timeout: one hour, optional
+        // if your app outside of China, please set `uploadURL` to `http://up.qiniug.com/`
+        // uploadURL: &#39;http://up.qiniu.com/&#39;,
+    },
+    url:function(result){
+        return &quot;http://img.mengxiaoban.cn/&quot; + result.hash;
+    }
+}
+</code></pre><p>说明</p>
+<ul>
+<li>path    : 默认是&#39;/simditor/upload&#39;,是simditor里用到的路径</li>
+<li>fileKey : 默认是&#39;file&#39;,是simditor里用到的fileKey</li>
+<li><a href="https://github.com/expressjs/multer">multer</a>是expressjs里上传的中间件</li>
+<li><a href="https://github.com/node-modules/qn">qn</a>是fengmk2写的七牛的上传模块</li>
+</ul>
+<h2 id="usage-in-simditor">Usage in Simditor</h2>
+<pre><code>var editor = new Simditor({
+  textarea: $(&#39;#editor&#39;),
+  //optional options
+  upload: {
+      fileObjName: &#39;file&#39;,
+      url: &#39;/simditor/upload&#39;,
+      fileKey: &#39;file&#39;,
+      params: {
+          &quot;token&quot;: window.qn_token
+      }
+  }
+});
+</code></pre><h2 id="test">Test</h2>
+<pre><code>npm start
+</code></pre><p>打开Postman界面测试操作如下</p>
+<p><img src="img/test.png" alt=""></p>
+<h2 id="contributing">Contributing</h2>
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am &#39;Add some feature&#39;</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+<h2 id="-">版本历史</h2>
+<ul>
+<li>v1.0.0 初始化版本</li>
+</ul>
+<h2 id="-fork-">欢迎fork和反馈</h2>
+<ul>
+<li>write by <code>i5ting</code> i5ting@126.com</li>
+</ul>
+<p>如有建议或意见，请在issue提问或邮件</p>
+<h2 id="license">License</h2>
+<p>this repo is released under the <a href="http://www.opensource.org/licenses/MIT">MIT
+License</a>.</p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
