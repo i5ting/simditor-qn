@@ -1,6 +1,6 @@
 # simditor-qn
 
-simditor upload router with qiniu.com for expressjs
+[simditor](http://simditor.tower.im/) upload router with qiniu.com for expressjs
 
 Artwork by [i5ting](http://www.github.com/i5ting/).
 
@@ -12,7 +12,7 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 
 ## Install
 
-    [sudo]npm install --save simditor-qn
+    npm install --save simditor-qn
 
 ## Usage 
 
