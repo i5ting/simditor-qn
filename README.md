@@ -87,7 +87,14 @@ var editor = new Simditor({
 
 ## Test
 
+```
+npm start
+```
+
+打开Postman界面测试操作如下
+
 ![](img/test.png)
+
 ## Contributing
 
 1. Fork it

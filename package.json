@@ -1,7 +1,7 @@
 {
   "name": "simditor-qn",
-  "version": "1.0.0",
-  "description": "express middleware for simditor-qn",
+  "version": "1.0.1",
+  "description": "express router for simditor-qn",
   "main": "index.js",
   "scripts": {
     "start" : "npm publish .",
