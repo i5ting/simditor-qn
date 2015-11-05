@@ -1,4 +1,6 @@
-config = {
+module.exports = {
+  path: '/simditor/upload',
+  fileKey: 'file',
 	multer:{ 
 	 	dest: 'uploads/' 
 	},

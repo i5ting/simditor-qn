@@ -39,7 +39,9 @@ var server = app.listen(3000, function () {
 ## Configuration
 
 ```
-config = {
+module.exports = {
+  path: '/simditor/upload',
+  fileKey: 'file',
 	multer:{ 
 	 	dest: 'uploads/' 
 	},
@@ -57,6 +59,13 @@ config = {
 	}
 }
 ```
+
+说明
+
+- path    : 默认是'/simditor/upload',是simditor里用到的路径
+- fileKey : 默认是'file',是simditor里用到的fileKey
+- [multer](https://github.com/expressjs/multer)是expressjs里上传的中间件
+- [qn](https://github.com/node-modules/qn)是fengmk2写的七牛的上传模块
 
 ## Usage in Simditor
 
