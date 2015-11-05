@@ -1,0 +1,24 @@
+{
+  "name": "simditor-qn",
+  "version": "1.0.0",
+  "description": "express route",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i5ting/simditor-qn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i5ting/simditor-qn/issues"
+  },
+  "homepage": "https://github.com/i5ting/simditor-qn#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "multer": "^1.1.0",
+    "qn": "^1.1.0"
+  }
+}
