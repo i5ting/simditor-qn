@@ -13,7 +13,7 @@ module.exports = function (app, cfg){
   }
   
   if(!cfg.fileKey){
-    fileKey = 'file';
+    cfg.fileKey = 'file';
   }
   
   app.post(cfg.path, upload.single(cfg.fileKey), upload_action);
