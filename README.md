@@ -1,6 +1,6 @@
 # simditor-qn
 
-[simditor](http://simditor.tower.im/) upload router with qiniu.com for expressjs
+[simditor](http://simditor.tower.im/) upload router with qiniu.com for Koa 2.x
 
 Artwork by [i5ting](http://www.github.com/i5ting/).
 
@@ -17,23 +17,19 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 ## Usage 
 
 ```
-var express = require('express');
-var app = express();
+const Koa = require('koa');
+const app = new Koa();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-var simditor_qn_config = require('../simditor_qn')
-
+var config = require('../simditor_qn');
 require('simditor-qn')(app, simditor_qn_config);
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
+// response
+app.use(ctx => {
+  ctx.body = 'Hello Koa';
 });
+
+
+app.listen(4000);
 ```
 
 ## Configuration
@@ -88,7 +84,7 @@ var editor = new Simditor({
 ## Test
 
 ```
-npm start
+npm test
 ```
 
 打开Postman界面测试操作如下
