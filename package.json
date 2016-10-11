@@ -1,11 +1,11 @@
 {
-  "name": "simditor-qn",
+  "name": "koa-simditor-qn",
   "version": "1.0.2",
   "description": "express router for simditor-qn",
   "main": "index.js",
   "scripts": {
-    "start" : "npm publish .",
-    "test"  : "node test/app.js"
+    "start": "npm publish .",
+    "test": "node test/app.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/i5ting/simditor-qn#readme",
   "dependencies": {
-    "express": "^4.13.3",
-    "multer": "^1.1.0",
+    "koa-multer": "^1.0.0",
+    "koa-router": "^7.0.1",
     "qn": "^1.1.0"
+  },
+  "devDependencies": {
+    "koa": "^2.0.0"
   }
 }

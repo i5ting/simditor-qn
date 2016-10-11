@@ -1,7 +1,5 @@
-var express = require('express');
-var router = express.Router();
-
-var multer  = require('multer');
+var router = require('koa-router')();
+var multer = require('koa-multer');
 
 module.exports = function (app, cfg){
   // console.log(cfg);
@@ -16,5 +14,9 @@ module.exports = function (app, cfg){
     cfg.fileKey = 'file';
   }
   
-  app.post(cfg.path, upload.single(cfg.fileKey), upload_action);
+  router.post(cfg.path, upload.single(cfg.fileKey), upload_action);
+
+  console.dir(router.stack)  
+  console.log(app)
+  app.use(router.routes()).use(router.allowedMethods());
 }
