@@ -1,6 +1,6 @@
 {
   "name": "simditor-qn",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "express router for simditor-qn",
   "main": "index.js",
   "scripts": {
