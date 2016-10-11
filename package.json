@@ -1,7 +1,7 @@
 {
   "name": "koa-simditor-qn",
   "version": "1.0.2",
-  "description": "express router for simditor-qn",
+  "description": "Koa router for simditor-qn",
   "main": "index.js",
   "scripts": {
     "start": "npm publish .",
