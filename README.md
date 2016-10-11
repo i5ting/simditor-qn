@@ -9,6 +9,8 @@ Artwork by [i5ting](http://www.github.com/i5ting/).
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/i5ting/simditor-qn/master/LICENSE.md)
 [![npm](https://img.shields.io/npm/dt/simditor-qn.svg)](https://www.npmjs.com/package/simditor-qn)
 
+- koa-simditor-qn for koa 2.x on [koa](https://github.com/i5ting/simditor-qn/tree/koa) branch
+- simditor-qn for express on [master](https://github.com/i5ting/simditor-qn) branch
 
 ## Install
 
